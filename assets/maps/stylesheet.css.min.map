@@ -1,0 +1,1 @@
+{"version":3,"sources":["stylesheet.scss"],"names":[],"mappings":"AAAA;EACC,qCAAoC;EACpC,gBAAe,EACf","file":"../sass/stylesheet.css","sourcesContent":["body{\n\tfont-family: 'Open Sans', sans-serif;\n\tfont-size: 16px;\n}\n\n@media screen and (max-width: 1200px) { \n\n}"]}
