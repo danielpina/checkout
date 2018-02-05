@@ -30,3 +30,6 @@ The Price promise bottom left corner box animates the black border when the user
 The checkout button animates the background color when the mouse hover.
 
 **ToDo:** Use a Javascript framework/library to read the product data (collection) from a json file and dynamically output the rows
+
+## Attempt to use ECMA2015
+ **ToDo:** add Babel to task runner from [here](https://www.npmjs.com/package/gulp-babel) and have a look at this [Gist](https://gist.github.com/danielpina/27a503b94bff0f9530470aa59091c353)
