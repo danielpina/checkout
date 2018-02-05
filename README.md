@@ -29,3 +29,5 @@ When the checkout button is clicked, the details of the products in the basket a
 The Price promise bottom left corner box animates the black border when the user hover the box.
 
 The checkout button animates the background color when the mouse hover.
+
+ToDo: Use a Javascript framework/library to read the product data (collection) from a json file and dynamically output the rows
