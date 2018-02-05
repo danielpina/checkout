@@ -1,8 +1,460 @@
 body{
 	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
+	color:#000;
+	background:url("../images/bg.svg") no-repeat;
+	background-size:auto;
+	background-position: -140% 0%;
+	margin:0;
+	padding:0;
 }
 
+.loading {
+	position: fixed;
+	z-index: 999;
+	height: 2em;
+	width: 2em;
+	overflow: show;
+	margin: auto;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	&:before{
+		content: '';
+  		display: block;
+  		position: fixed;
+  		top: 0;
+  		left: 0;
+  		width: 100%;
+  		height: 100%;
+  		background-color: rgba(0,0,0,0.3);	
+	}
+	&:not(:required){
+		font: 0/0 a;
+  		color: transparent;
+  		text-shadow: none;
+  		background-color: transparent;
+  		border: 0;
+  		&:after{
+  			content: '';
+  			display: block;
+  			font-size: 10px;
+  			width: 1em;
+  			height: 1em;
+  			margin-top: -0.5em;
+  			animation: spinner 1500ms infinite linear;
+  			border-radius: 0.5em;
+  			box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;  			
+  		}
+	}
+}
+
+
+@keyframes spinner {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
+}
+
+
+header{
+	text-align:center;
+	nav{
+		padding-top:100px;
+		max-width:524px;
+		margin:0 auto;
+		.steps{
+			text-transform:uppercase;
+			line-height:1.6em;
+			div{
+				display:block;
+				float:left;
+				max-width:120px;
+				width:100%;
+				text-align:center;
+				margin:10px 82px 0 0;
+				&:last-of-type{
+					margin-right:0;
+				}
+			}
+		}
+	}
+	img{
+		margin:50px 0 70px 0;
+	}	
+}
+
+
+/* Remove button */
+a.removeProduct{
+	text-decoration:none;
+	position: relative;
+	&:after{
+		content: "";
+		position: absolute;
+		z-index: -1;
+		right: 0;
+		width: 0;
+		bottom: -2px;
+		background: #000;
+		height: 1px;
+		transition: width 0.3s ease-out;
+	}
+	&:hover:after,
+	&:focus:after,
+	&:active:after {
+		left: 0;
+		right: auto;
+		width: 100%;
+	}
+}
+
+/* Checkout button */
+.checkoutBtn{
+	background-color:#FFD7D7;
+	height:60px;
+	width:300px;
+	font-weight:700;
+	font-size:0.8em;
+	color:#000;
+	margin-top:1.8em;
+	transition: all .2s ease-in;
+	cursor:pointer;
+	border:0;
+	&:hover{
+		background-color:#ADE1F3;
+	}
+}
+
+/* Continue Shopping button */
+.continueShopping{
+	background-color:#EAEAEA;
+	height:60px;
+	width:300px;
+	font-weight:700;
+	font-size:0.8em;
+	color:#767779;
+	margin-top:1.2em;
+	border:0;
+	cursor:pointer;
+}
+
+
+
+/* Navigation */
+.wrap {
+	text-align: center;
+  	position: relative;
+  	&:before{
+  		content: '';
+  		position: absolute;
+  		top: 50%;
+  		left: 76px;
+  		border-top: 1px solid #D8D8D8;
+  		background: black;
+  		width: 76%;
+  		transform: translateY(-50%);
+  	}
+  	.links {
+  		padding: 0 35px;
+  		display: flex;
+  		justify-content: space-between;
+  		position: relative;
+  		.dot {
+		  	width: 50px;
+		  	height: 48px;
+		  	color: #D8D8D8;
+			font-size: 1.2em;
+			font-weight: bold;
+			line-height: 2.2em;
+		  	&.step-1{
+		  		background: url("../images/path-1.svg") no-repeat;
+		  		&.active{
+					color:#fff;
+					background-color: #000;
+					background-image: none;
+					mask: url("../images/path-1.svg") no-repeat;
+		  		}
+		  	}
+		  	&.step-2{
+		  		background: url("../images/path-2.svg") no-repeat;
+		  		&.active{
+					color:#fff;
+					background-color: #000;
+					background-image: none;
+					mask: url("../images/path-2.svg") no-repeat;
+		  		}
+		  	}
+		  	&.step-3{
+		  		background: url("../images/path-3.svg") no-repeat;
+		  		&.active{
+					color:#fff;
+					background-color: #000;
+					background-image: none;
+					mask: url("../images/path-3.svg") no-repeat;
+		  		}
+		  	}
+		}  		
+  	}
+}
+
+
+
+table{
+	width:100%;
+	border-collapse:collapse;
+	&#products-list{
+		&.closed{
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 0s 1s, opacity 0.5s linear;
+		}
+	}
+	&.order-totals{
+		margin-top:2.5em;
+		tr{
+			td{
+				text-align:right;
+				padding:0.8em 0;
+			}
+		}
+	}
+	th{
+		border-bottom:1px solid #000;
+		padding-bottom:0;
+		margin-bottom:0;
+	}
+	tbody{
+		tr{
+			&.product{
+				transition: opacity 500ms linear;
+				td{
+					border-bottom:1px solid #000;
+					padding:30px 0;
+					&.price{
+						.span-price{
+							text-decoration:line-through;
+							display:block;
+						}
+						.sale-price{
+							display:block;
+							color:#D0021B;
+						}
+					}
+				}
+			}
+			td{
+				text-align:center;
+				vertical-align:top;
+				&.product-details{
+					.img-wrapper{
+						float:left;
+						margin-right:20px;
+						&+p{
+							float:left;
+							span.stock{
+								display:table-cell;
+								padding:1px 3px;
+								background-color:#D6FFEA;
+								font-size:0.8em;
+							}
+						}
+					}
+				}
+				&.qty{
+					.warning{
+						font-size:0.8em;
+						width: 100px;
+    					margin: auto;
+    					border:1px solid red;
+    					border-radius:5px;
+    					padding:5px;
+    					color:red;
+    					margin-top:10px;
+					}
+					.qty-group{
+						input{
+							width:70px;
+							height:60px;
+							font-size:1.2em;
+							margin-bottom:20px;
+							text-align:center;
+						}
+						input[type='number']::-webkit-inner-spin-button, 
+						input[type='number']::-webkit-outer-spin-button { 
+    						-webkit-appearance: none;
+    						margin: 0;
+						}
+						.qtyControl{
+							font-size:1.5em;
+							border:0;
+							background-color:transparent;
+							cursor:pointer;
+						}
+					}
+				}
+				&.subtotal{
+
+				}
+			}
+		}
+	}
+	tfoot{
+		tr{
+			td{
+				&.continue-shopping{
+					vertical-align:top;
+				}
+				#order-total{
+					font-size:1.25em;
+					font-weight:700;
+				}
+				.currency{
+					&.order-total{
+						font-weight:700;
+						font-size:1.25em;
+					}
+				}
+			}
+		}
+	}
+}
+
+.currency{display:none;}
+
+
+.main-container,header,footer{
+	width:100%;
+	max-width:1200px;
+	margin:0 auto;
+	.row{
+		&:before,&:after{
+			content:" ";
+			display:table;
+			clear:both;
+		}
+		margin-right:-15px;
+		margin-left:-15px;
+		.col{
+			width:100%;
+			padding-left:15px;
+			padding-right:15px;
+		}
+		.col-3{
+			width:33.33333333%;
+			float:left;
+			padding-left:15px;
+			padding-right:15px;
+			position:relative;
+			min-height:1px;
+		}
+	}
+}
+
+footer{
+	h2{
+		font-size:1em;
+		font-weight:700;
+	}
+	.returns{
+		div{
+			background-color:#D6FFEA;
+			padding: 10px 30px;
+			margin:50px 0;
+			position:relative;
+			div.border{
+		    	position: absolute;
+		    	top: 10px;
+		    	left: 10px;
+		    	border: 1px solid #000;
+		    	background-color: transparent;
+		    	height: 100%;
+		    	width: 100%;
+		    	padding: 0;
+		    	margin: 0;
+			}
+		}
+	}
+	.promise{
+		div{
+			background: linear-gradient(159.39deg, #FDD8D8 0%, #ADE1F3 100%);
+			padding: 10px 30px;
+			margin:50px 0;
+			position:relative;
+			cursor:pointer;
+			div.border{
+		    	position: absolute;
+		    	top: -10px;
+		    	left: -10px;
+		    	border: 1px solid #000;
+		    	background: transparent;
+		    	height: 100%;
+		    	width: 100%;
+		    	padding: 0;
+		    	margin: 0;
+			}
+			&:hover > div.border{
+				animation: move 1s;
+			}
+		}
+	}
+	.contact{
+		div{
+			padding: 10px 30px;
+			margin:50px 0;
+		}
+	}
+}
+
+
+/* Helpers */
+*{
+	box-sizing:border-box;
+}
+.t-left{
+	text-align: left !important;
+}
+.t-right{
+	text-align: right !important;
+}
+.btn{
+	padding:14px;
+}
+
+.notices{
+    text-align: center;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 70%;
+    max-width: 640px;
+    padding: 5px;
+    margin: 0 auto 50px;
+    opacity:0;
+    transition: opacity 0.3s;
+}
+
+.red{
+	border-color:red;
+	opacity:1;
+	color:red;
+}
+.green{
+	border-color:green;
+	opacity:1;
+	color:green;
+}
+
+@keyframes fadeInOpacity {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+@keyframes move{
+    from { left: -10px; top:-10px; } 
+    to { left:10px; top:10px; } 
+}
+
+
+/* Media Queries */
 @media screen and (max-width: 1200px) { 
 
 }

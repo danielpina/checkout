@@ -20,7 +20,7 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.write('../maps'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss({
-            maxLineLen: 10
+            maxLineLen: 100
         }))
         .pipe(gulp.dest('./assets/dist'));
 
@@ -31,10 +31,10 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
 
     gulp.src('./assets/scripts/app.js')
-        .pipe(sourcemaps.init())
-        .pipe(uglify())
         .pipe(jshint())
         .pipe(jshint.reporter())
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
         .pipe(sourcemaps.write('../maps'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest('./assets/dist'));

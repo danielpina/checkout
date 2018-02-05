@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>title</title>
+    <title>Checkout Page</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="assets/dist/stylesheet.min.css" rel="stylesheet" type="text/css">
@@ -14,54 +14,162 @@
   </head>
 
   <body>
-  
-    <nav>
-      <ul>
-        <li>Stage 1</li>
-        <li>Stage 2</li>
-        <li>Stage 3</li>
-      </ul>      
-    </nav>
+    <div class="loading" id="loading">Loading&#8230;</div>
+    <header>
+      <nav>
+        <div class="wrap">
+          <div class="links">
+            <div class="dot step-1 active">1</div>
+            <div class="dot step-2">2</div>
+            <div class="dot step-3">3</div>
+          </div>
+        </div>
+        <div class="steps">
+          <div class="step-1 active">my basket</div>
+          <div class="step-2">delivery</div>
+          <div class="step-3">payment</div>
+        </div> 
+        <div style="clear: both;"> 
+      </nav>
+      <img src="assets/images/my-basket.png" alt="My Basket">
+    </header>
 
-    <div class="container">
+    <div class="main-container">
+      <div class="row">
+        <div class="col">
+          <div class="notices" id="notices"></div>
+          <table id="products-list">
+            <thead>
+              <tr>
+                <th class="t-left">Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th class="t-right">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
 
-      <div class="row" data-id="">
-        <div class="col image">
-          <img src="" alt="">
-        </div>
-        <div class="col description">
-          <p></p>
-        </div>
-        <div class="col price" data-price="">
-          <span></span>
-        </div>
-        <div class="col qty">
-          <button class="qtyControl remove">&minus;</button>
-          <input type="number" name="qty" class="" min="1" max="10">
-          <button class="qtyControl add">&plus;</button>
-        </div>
-        <div class="col subtotal">
-          <span></span>
+              <tr class="product" data-id="1" id="product-1">
+                <td class="product-details t-left">
+                  <div class="img-wrapper"><img src="products/images/product-img-1.png" alt=""></div>
+                  <p><span class="product-name">Oversized grandpaʼs cool jumper in brown and red</span><span class="stock">In Stock</span></p>
+                </td>
+                <td class="price" data-price="1878">
+                  <p>&pound;<span>1,878.00</span></p>
+                </td>
+                <td class="qty">
+                  <div class="qty-group">
+                    <button class="qtyControl remove">&minus;</button>
+                    <input type="number" name="qty" class="" min="1" max="10" value="1" disabled>
+                    <button class="qtyControl add">&plus;</button>
+                  </div>
+                  <div class="remove product-removal">
+                    <a href="#" class="removeProduct">Remove</a>
+                  </div>
+                </td>
+                <td class="subtotal t-right">
+                  <p><span class="currency">&pound;</span><span class="row-subtotal"></span></p>
+                </td>
+              </tr>
+
+              <tr class="product" data-id="2" id="product-2">
+                <td class="product-details t-left">
+                  <div class="img-wrapper"><img src="products/images/product-img-2.png" alt=""></div>
+                  <p><span class="product-name">Merry Christmas jumper in bright blue</span><span class="stock">In Stock</span></p>
+                </td>
+                <td class="price" data-price="34">
+                  <p>
+                    <span class="span-price">&pound;<span>39.00</span></span>
+                    <span class="sale-price">&pound;<span>34.00</span></span>
+                  </p>
+                </td>
+                <td class="qty">
+                  <div class="qty-group">
+                    <button class="qtyControl remove">&minus;</button>
+                    <input type="number" name="qty" class="qty-input" min="1" max="10" value="2" disabled>
+                    <button class="qtyControl add">&plus;</button>
+                  </div>
+                  <div class="remove product-removal">
+                    <a href="#" class="removeProduct">Remove</a>
+                  </div>
+                </td>
+                <td class="subtotal t-right">
+                  <p><span class="currency">&pound;</span><span class="row-subtotal"></span></p>
+                </td>
+              </tr>
+
+
+
+
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="continue-shopping">
+                  <button class="btn continueShopping">Continue Shopping</button>
+                </td>
+                <td colspan="2">
+                  <table class="order-totals">
+                    <tr>
+                      <td>Subtotal</td>
+                      <td><span class="currency">&pound;</span><span id="order-subtotal"></span></td>
+                    </tr>
+                    <tr>
+                      <td>VAT</td>
+                      <td><span class="currency">&pound;</span><span id="order-vat"></span></td>
+                    </tr>
+                    <tr>
+                      <td>Total excluding delivery</td>
+                      <td><span class="currency order-total">&pound;</span><span id="order-total"></span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class=""><button class="btn checkoutBtn" id="checkout-btn">Checkout Securely</button></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
 
+
+
     </div>
 
-    <footer>
+    <footer class="container">
       <div class="row">
-        <div class="col promise"></div>
-        <div class="col return"></div>
-        <div class="col contact"></div>
+        <div class="col-3 promise">
+          <div>
+            <h2>Price Promise</h2>
+            <p>The premise is simple: If you find what youʼre looking for, for less, weʼll match it.</p>
+            <div class="border"></div>
+          </div>
+          
+        </div>
+        <div class="col-3 returns">
+          <div>
+            <h2>Returns</h2>
+            <p>Lorem ipsum text here about returns policey at LogicSpot Shop.</p>
+            <div class="border"></div>
+          </div>
+          
+        </div>
+        <div class="col-3 contact">
+          <div>
+            <p>If you have any questions, please call us on 0800 800 123</p>
+          </div>
+        </div>
       </div>
     </footer>
 
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script>
       !window.jQuery && document.write('<script src="assets/scripts/jquery-3.3.1.min.js"><\/script>')
     </script>
-    <script src="assets/dist/app.js"></script>
+    <script src="assets/dist/app.min.js"></script>
 
   </body>
 

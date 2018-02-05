@@ -18,5 +18,8 @@
     "gulp-uglify": "^3.0.0",
     "gulp-uglifycss": "^1.0.9",
     "jshint": "^2.9.5"
+  },
+  "dependencies": {
+    "gulp-eslint": "^4.0.2"
   }
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Oversized grandpaʼs cool jumper in brown and red",
+    "image": "jumper1.jpg",
+    "price": "1,878.00",
+    "initial_qty": "1",
+    "in_stock": 1,
+    "on_sale": 0,
+    "sale_price": ""
+  },
+  {
+    "name": "Merry Christmas jumper in bright blue",
+    "image": "jumper2.jpg",
+    "price": "39",
+    "initial_qty": "2",
+    "in_stock": 1,
+    "on_sale": 1,
+    "sale_price": "34"
+  }
+]		
